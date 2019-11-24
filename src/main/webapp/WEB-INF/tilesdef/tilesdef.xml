@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>	
+	<!-- Normal template -->
+	<definition name="layout.normal" template="/WEB-INF/tilesdef/template/layout_normal.jsp">
+		<put-attribute name="layout.header"
+			value="/WEB-INF/tilesdef/template/header.jsp" />
+	    <put-attribute name="layout.menuTop"
+			value="/WEB-INF/tilesdef/template/normal_menuTop.jsp" />
+		<put-attribute name="layout.footer"
+			value="/WEB-INF/tilesdef/template/footer.jsp" />
+		<put-attribute name="layout.scripter"
+			value="/WEB-INF/tilesdef/template/scripter.jsp" />
+   	</definition>
+	
+	<!-- Normal list template -->
+	<definition name="layout.normal_list" template="/WEB-INF/tilesdef/template/layout_normal_list.jsp">
+		<put-attribute name="layout.header"
+			value="/WEB-INF/tilesdef/template/header.jsp" />
+	    <put-attribute name="layout.menuTop"
+			value="/WEB-INF/tilesdef/template/normal_menuTop.jsp" />
+		<put-attribute name="layout.footer"
+			value="/WEB-INF/tilesdef/template/footer.jsp" />
+		<put-attribute name="layout.scripter"
+			value="/WEB-INF/tilesdef/template/scripter.jsp" />
+		<put-attribute name="layout.pagination"
+			value="/WEB-INF/tilesdef/template/pagination.jsp" />
+   	</definition>
+
+	<!-- admin  -->
+	<definition name="/admin/*/*" extends="layout.normal">
+		<put-attribute name="layout.title" value="{1} > {2} > {3}" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{2}/{3}.jsp" />
+	</definition>
+
+	<!-- Normal list -->
+	<definition name="/*/list" extends="layout.normal_list">
+		<put-attribute name="layout.title" value="{1} > list" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/list.jsp" />
+	</definition>
+
+	<!-- Normal without list -->
+	<definition name="/*/*" extends="layout.normal">
+		<put-attribute name="layout.title" value="{1} > {2}" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+
+	<!-- Normal Popup -->
+	<definition name="/*/*/popup" template="/WEB-INF/tilesdef/template/layout_popup.jsp">
+		<put-attribute name="layout.title" value="{1} > {2}" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+</tiles-definitions>
